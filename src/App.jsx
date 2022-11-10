@@ -11,15 +11,14 @@ function App() {
 		<Routes>
 			{/* Public Routes */}
 			<Route path="/" element={<PublicLayout />}>
-				<Route index element={<Login />} />
+				{/* <Route index element={<Login />} /> */}
+				<Route index element={<Todos />} />
 				{/* Ideally there would be a home page for the index route and a separate login route */}
 				{/* <Route path="login" element={<Login />} /> */}
 			</Route>
 
 			{/* Private Routes */}
-			<Route element={<PrivateLayout />}>
-				<Route path="/todos" element={<Todos />} />
-			</Route>
+			<Route element={<PrivateLayout />}>{/* <Route path="/todos" element={<Todos />} /> */}</Route>
 
 			{/* Catch all */}
 			<Route path="*" element={<NotFound />} />

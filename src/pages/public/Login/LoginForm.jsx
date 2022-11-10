@@ -17,11 +17,9 @@ const LoginForm = () => {
 
 	const [email, setEmail] = useState("");
 	const [validEmail, setValidEmail] = useState(false);
-	// const [emailFocus, setEmailFocus] = useState(false);
 
 	const [pwd, setPwd] = useState("");
 	const [validPwd, setValidPwd] = useState(false);
-	// const [pwdFocus, setPwdFocus] = useState(false);
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [errMsg, setErrMsg] = useState("");
@@ -55,12 +53,15 @@ const LoginForm = () => {
 		}
 
 		try {
+			console.log("try block");
 			// test@rapptrlabs.com
 			// Test123
+
 			// const body = { email, pwd };
 			// const { data } = await axios.post(loginUrl, body);
+
 			// const { data } = await axios.get("https://jsonplaceholder.typicode.com/users/1");
-			const user = await new Promise((res, rej) => {
+			const data = await new Promise((res, rej) => {
 				setTimeout(() => {
 					res({
 						user_id: 16,
@@ -75,7 +76,7 @@ const LoginForm = () => {
 					});
 				}, 800);
 			});
-			setUser(user);
+			setUser(data);
 			navigate(from, { replace: true });
 		} catch (err) {
 			setErrMsg("The server could not be reached. Please try again later.");
@@ -96,8 +97,6 @@ const LoginForm = () => {
 							ref={userRef}
 							required
 							onChange={(e) => setEmail(e.target.value)}
-							// onFocus={() => setEmailFocus(true)}
-							// onBlur={() => setEmailFocus(false)}
 							className={!validEmail && email.length > 0 ? "invalid-entry" : ""}
 						/>
 						{!validEmail && email.length > 0 && <p className="instructions">Not a valid email</p>}
@@ -114,8 +113,6 @@ const LoginForm = () => {
 							placeholder="Must be at least 4 characters"
 							required
 							onChange={(e) => setPwd(e.target.value)}
-							// onFocus={() => setPwdFocus(true)}
-							// onBlur={() => setPwdFocus(false)}
 							className={!validPwd && pwd.length > 0 ? "invalid-entry" : ""}
 						/>
 						{!validPwd && pwd.length > 0 && <p className="instructions">Not a valid password</p>}
@@ -125,7 +122,7 @@ const LoginForm = () => {
 				<button
 					type="submit"
 					disabled={isLoading || !validEmail || !validPwd}
-					className={validEmail && validPwd ? "" : "invalid-submit"}
+					className={`submit ${validEmail && validPwd ? "" : "invalid-submit"}`}
 				>
 					Login
 				</button>

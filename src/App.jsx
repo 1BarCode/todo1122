@@ -1,8 +1,8 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import PublicLayout from "./components/layout/PublicLayout";
+import PublicRoutes from "./components/layout/PublicRoutes";
 import Login from "./pages/public/Login";
-import PrivateLayout from "./components/layout/PrivateLayout";
+import PrivateRoutes from "./components/layout/PrivateRoutes";
 import Todos from "./pages/private/Todos";
 import NotFound from "./pages/public/NotFound";
 
@@ -10,15 +10,14 @@ function App() {
 	return (
 		<Routes>
 			{/* Public Routes */}
-			<Route path="/" element={<PublicLayout />}>
-				{/* <Route index element={<Login />} /> */}
-				<Route index element={<Todos />} />
-				{/* Ideally there would be a home page for the index route and a separate login route */}
-				{/* <Route path="login" element={<Login />} /> */}
+			<Route path="/" element={<PublicRoutes />}>
+				<Route index element={<Login />} />
 			</Route>
 
 			{/* Private Routes */}
-			<Route element={<PrivateLayout />}>{/* <Route path="/todos" element={<Todos />} /> */}</Route>
+			<Route element={<PrivateRoutes />}>
+				<Route path="/todos" element={<Todos />} />
+			</Route>
 
 			{/* Catch all */}
 			<Route path="*" element={<NotFound />} />

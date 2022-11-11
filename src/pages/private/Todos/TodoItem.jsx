@@ -7,14 +7,14 @@ const TodoItem = ({ item, todos, setTodos }) => {
 
 	const handleEdit = (idToEdit) => {
 		setTodos((prev) => {
-			// find the todo with matching id to toggle edit state to true
+			// Find the todo with matching id to toggle edit state to true
 			const updatedTodos = prev.map((t) => (t.id === idToEdit ? { ...t, edit: true } : t));
 			return updatedTodos;
 		});
 	};
 
 	const handleDelete = (idToDelete) => {
-		// find the todo with matching id to delete from current todos list
+		// Find the todo with matching id to delete from current todos list
 		const updatedTodos = todos.filter((t) => t.id !== idToDelete);
 		localStorage.setItem("todos", JSON.stringify(updatedTodos));
 		setTodos(updatedTodos);

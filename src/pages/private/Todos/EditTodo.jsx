@@ -13,10 +13,12 @@ const EditTodo = ({ item, todos, setTodos }) => {
 
 	const handleSave = (idToSave) => {
 		if (edit.length > 0 && edit.length < 26) {
-			// find the todo with matching id to update the task & edit state
+			// Find the todo with matching id to update the task & edit state
 			const updatedTodos = todos.map((t) => (t.id === idToSave ? { ...t, task: edit, edit: false } : t));
 			localStorage.setItem("todos", JSON.stringify(updatedTodos));
 			setTodos(updatedTodos);
+		} else {
+			editRef.current.focus();
 		}
 	};
 

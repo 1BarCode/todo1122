@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-const PublicLayout = () => {
+const PublicRoutes = () => {
 	return (
 		<main>
 			<Outlet />
@@ -9,4 +9,4 @@ const PublicLayout = () => {
 	);
 };
 
-export default PublicLayout;
+export default PublicRoutes;

@@ -3,7 +3,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Layout from "./Layout";
 
-const PrivateLayout = () => {
+const PrivateRoutes = () => {
 	const { user } = useAuth();
 	const location = useLocation();
 
@@ -19,4 +19,4 @@ const PrivateLayout = () => {
 	);
 };
 
-export default PrivateLayout;
+export default PrivateRoutes;

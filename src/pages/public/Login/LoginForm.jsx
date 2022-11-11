@@ -53,15 +53,16 @@ const LoginForm = () => {
 		}
 
 		try {
-			console.log("try block");
-			// test@rapptrlabs.com
-			// Test123
-
-			// const body = { email, pwd };
+			// Endpoint should come from environment variable in a real app
+			// POST endpoint failed with CORS error
+			// const body = { email, password };
 			// const { data } = await axios.post(loginUrl, body);
 
+			// Tried with jsonplaceholder and it worked normally
 			// const { data } = await axios.get("https://jsonplaceholder.typicode.com/users/1");
-			const data = await new Promise((res, rej) => {
+
+			// Simulated server latency with custom Promise & setTimeout
+			const user = await new Promise((res, rej) => {
 				setTimeout(() => {
 					res({
 						user_id: 16,
@@ -74,9 +75,9 @@ const LoginForm = () => {
 						user_is_new: 1,
 						user_token: "6dd4737a8b7ec61313ae5e900420d46815e1d13b2902be71b97a8fbf1f421a3e",
 					});
-				}, 800);
+				}, 300);
 			});
-			setUser(data);
+			setUser(user);
 			navigate(from, { replace: true });
 		} catch (err) {
 			setErrMsg("The server could not be reached. Please try again later.");
